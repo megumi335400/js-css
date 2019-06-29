@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>时崎狂三</title>
+    <script type="text/javascript">
+        window.onload=function(){
+            var imgArr=['image/1.jpg','image/2.jpg','image/3.jpg','image/4.jpg'];
+            var img1=document.getElementById('img1');
+            var index=0;
+
+            setInterval(function(){
+                index++;
+                if(index>imgArr.length-1){
+                    index=0;
+                }
+                img1.src=imgArr[index];
+
+            },900)
+
+            var box = document.getElementsByName('box');
+            var submit = document.getElementById('submit');
+            var all = document.getElementById('all');
+            var all_allnot = document.getElementById('all_allnot');
+            var none = document.getElementById('none');
+            var opposite = document.getElementById('opposite');
+
+            all.onclick=function(){
+                for(var i=0;i<box.length;i++){
+                    box[i].checked=true;
+                }
+                all_allnot.checked=true;    
+            }
+            all_allnot.onclick=function(){
+                
+                
+                for(var i=0;i<box.length;i++){
+                    box[i].checked=all_allnot.checked;
+                }    
+            }
+            none.onclick=function(){
+                for(var i=0;i<box.length;i++){
+                    box[i].checked=false;
+                }
+                all_allnot.checked=false;
+            }
+
+            submit.onclick=function(){
+                for(var i=0;i<box.length;i++){
+                    box[i].checked=false;
+                }
+                alert('投票成功');
+            }
+            opposite.onclick=function(){
+                for(var i=0;i<box.length;i++){
+                    box[i].checked=!box[i].checked;
+                }
+                
+            }
+            
+
+
+
+
+
+        }   
+    </script>
+    <style type="text/css">
+        *{
+        margin: 0;
+        padding: 0;
+
+    }
+    body{
+        
+        position: relative;
+    }
+    div{
+        border: 1px solid gray;
+        border-radius: 4px;
+    }
+        #container{
+            width: 100%;
+            height: 1200px;
+            background-color: blanchedalmond;
+            position: absolute;
+        }        
+        #main{
+            margin: 0 auto;
+            width: 70%;
+            height: 100%;
+            /* background-color: blueviolet; */
+        }
+        li{
+            list-style: none;
+            border-radius: 4px;
+            float: left;
+            text-align: center;
+            
+        }
+        #top{
+            text-align: center;
+            width: 100%;
+            height: 425px;
+            border: 1px solid gray;
+
+        }
+        #vote{
+            height: 250px;
+            background-color:cornsilk;
+        }
+        /* #message{
+            height: 125px;
+            background-color:cornflowerblue;
+        } */
+        #introduce{
+            height: 525px;
+            background-color:rosybrown;
+        }
+        #vote ul{
+            
+        }
+        #vote ul li{
+            float: left;
+            width: 15%;
+            height: 180px;
+            text-align: center;
+            margin: 0 2%;
+            border: 1px solid gray;
+            
+        }
+        
+        #vote ul li img{
+            width: 80%;
+            height: 70%;
+            
+        }
+        a{
+            text-decoration: none;
+        }
+        #top a:hover{
+            color: red;
+            transform: scale(1.1);
+            display: block;
+            
+        }
+        #vote ul li:hover{
+            transform: scale(1.1);
+        }
+        .text{
+            line-height: 30px;
+            text-indent: 2em;
+        }
+        #h1{
+            width: 100%;
+            height:50px; ;
+        }
+        #text{
+            width: 100%;
+            height: 200px;
+        }
+        #introduce_image{
+            position: relative; 
+            height: 250px;
+            width: 100%;
+            transform-style: preserve-3d;
+            transition: 1.5s;
+        }
+        #introduce_image:hover{
+            transform: rotateY(180deg);
+        }
+        #introduce_image img{
+            height: 250px;
+            width: 100%;
+            
+        }
+        .face{
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+        .back{
+            background-color:aqua;
+            z-index: -1;
+            transform: rotateY(180deg);
+            
+        }
+        .front{
+            
+        }
+
+
+        #nav{
+            position: fixed;
+            width: 100%;
+            height: 80px;
+            background-color: #fff;
+            opacity: 0.8;
+            
+        }
+        #nav_1{
+            margin: 0 15%;
+            background-color: #fff;
+            height: 100%;
+            
+        }
+        #nav_1 ul li{
+            width: 24%;
+            height: 100%;
+            display: block;
+            /* border: px solid red; */
+            line-height: 80px;
+        }
+        #nav a{
+            display: block;
+        }
+        #nav_1 ul li:hover{
+            background-color: blueviolet;
+            display: block;
+        }
+        .ad{
+            position: fixed;
+            top: 50%;
+
+        }
+        .ad img{
+            width: 5%;
+            height: 100px;
+        }
+        .right{
+            right: 0;
+        }
+        .left{
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="main">
+            <div id="top">
+                <a><img id="img1" src="image/2.jpg" alt="三三"></a>
+                <hr>
+            </div>
+            <div id="vote">
+                <div id="vote_nav">
+                    投票
+                    <input type="checkbox" id="all_allnot">全选/全不选
+                    <button id="all">全选</button>
+                    <button id="none">全不选</button>
+                    <button id="opposite">反选</button>
+                    <button id="submit">提交</button>
+                    <hr>
+
+                </div>
+                <ul>
+                    <li>
+                        <a href="#" class="acss">
+                        <img src="image/4.jpg" alt="1" ><br>
+                        时崎狂三<br></a>
+                        <input type="checkbox" name="box"><br>
+                    
+                    </li>
+                    <li>
+                            <a href="#" class="acss">
+                            <img src="image/4.jpg" alt="1" ><br>
+                            时崎狂三<br></a>
+                            <input type="checkbox" name="box"><br>
+                        
+                        </li>
+                        <li>
+                                <a href="#" class="acss">
+                                <img src="image/4.jpg" alt="1" ><br>
+                                时崎狂三<br></a>
+                                <input type="checkbox" name="box"><br>
+                            
+                            </li>
+                            <li>
+                                    <a href="#" class="acss">
+                                    <img src="image/4.jpg" alt="1" ><br>
+                                    时崎狂三<br></a>
+                                    <input type="checkbox" name="box"><br>
+                                
+                                </li>
+                                <li>
+                                        <a href="#" class="acss">
+                                        <img src="image/4.jpg" alt="1" ><br>
+                                        时崎狂三<br></a>
+                                        <input type="checkbox" name="box"><br>
+                                    
+                                    </li>
+                </ul>
+
+            </div>
+            <div id="introduce">
+                <div id="h1">
+                    <h1>Tokisaki Kurumi</h1>
+                </div>
+                <div class="text" id="text">
+                        狂三显现的天使为时之天使--【刻刻帝（Zafkiel）】，
+                        是超过有身高两倍的巨大时钟。刻刻帝的长针和短针分别是古式步枪和手枪，
+                        将刻刻帝的能力作为子弹发射出去，时钟上的数字分别有各种不同的强大能力。
+                        但是在使用天使的同时也会消耗大量的时间值（等同寿命），狂三左眼瞳孔是一个金色时钟，
+                        随能力的发动而转动。刻刻帝的力量发动时，时钟上的数字会有影子注入枪口，然后击中目标才会产生效果，
+                        在没有击中目标的情况下则是毫无意义。
+                </div>
+                <div id="introduce_image">
+                    <div class="face front">
+                            <img src="image/1.jpg" alt="1">
+                    </div>
+                    <div class="face back">
+                        <div class="text">
+
+                            一头黑色长发绑成两条辫子，
+                            怡然地垂落在双肩，
+                            纤细的肢体令人感到似乎只需稍微一用力便会折断，
+                            瀑布般的刘海遮住了拥有惊人美丽面容的左半部分，
+                            其另一侧则留下了如黑洞般深邃的右眼，
+                            以及樱花瓣一般娇嫩的双唇，
+                            充斥着能够仅靠一次眼神的交错就将男性俘获的，
+                            魔鬼般的魅力。皮肤如同珍珠般白晢光滑。
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+    <div id="nav">
+        <div id="nav_1">
+            <ul>
+                <a href="#"><li>首页</li></a>
+                <a href="1.html"><li>介绍</li></a>
+                <a href="#"><li>投票</li></a>
+                <a href="#"><li>更多</li></a>
+                
+            </ul>
+        </div>
+    </div>
+    <div class="ad right">
+        广告
+    </div>
+    <div class="ad left">
+        广告
+    </div>
+</body>
+</html>
